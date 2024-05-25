@@ -4,6 +4,7 @@
 #include "vipir/LIR/Instruction/Arithmetic.h"
 
 #include "vasm/instruction/twoOperandInstruction/LogicalInstruction.h"
+#include "vasm/instruction/twoOperandInstruction/ShiftRotateInstruction.h"
 #include "vasm/instruction/singleOperandInstruction/Grp4Instruction.h"
 #include "vasm/instruction/variableOperandInstruction/IMulInstruction.h"
 
@@ -51,6 +52,19 @@ namespace vipir
                 case Operator::Div:
                     operatorName = "DIV";
                     symbol = "/";
+                    break;
+                    
+                case Operator::ULShift:
+                    operatorName = "LSHIFT";
+                    symbol = "<<";
+                    break;
+                case Operator::URShift:
+                    operatorName = "RSHIFT";
+                    symbol = ">>";
+                    break;
+                case Operator::SRShift:
+                    operatorName = "SRSHIFT";
+                    symbol = ">>";
                     break;
 
                 case Operator::BWAnd:
@@ -108,6 +122,16 @@ namespace vipir
                     break;
                 case Operator::Div:
                     createSingleOpInstruction.template operator()<instruction::DivInstruction>();
+                    break;
+
+                case Operator::ULShift:
+                    createInstruction.template operator()<instruction::ShlInstruction>();
+                    break;
+                case Operator::URShift:
+                    createInstruction.template operator()<instruction::ShrInstruction>();
+                    break;
+                case Operator::SRShift:
+                    createInstruction.template operator()<instruction::SarInstruction>();
                     break;
 
                 case Operator::BWAnd:

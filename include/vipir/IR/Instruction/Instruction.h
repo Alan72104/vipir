@@ -28,6 +28,8 @@ namespace vipir
             SMUL, UMUL,
             SDIV, UDIV,
 
+            ULSHIFT, URSHIFT, SRSHIFT,
+            
             BWAND, BWOR, BWXOR,
 
             EQ, NE,

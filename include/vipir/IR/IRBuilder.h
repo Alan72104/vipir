@@ -66,6 +66,10 @@ namespace vipir
         BinaryInst* CreateSDiv(Value* left, Value* right);
         BinaryInst* CreateUDiv(Value* left, Value* right);
 
+        BinaryInst* CreateULShift(Value* left, Value* right);
+        BinaryInst* CreateURShift(Value* left, Value* right);
+        BinaryInst* CreateSRShift(Value* left, Value* right);
+
         BinaryInst* CreateBWOr(Value* left, Value* right);
         BinaryInst* CreateBWAnd(Value* left, Value* right);
         BinaryInst* CreateBWXor(Value* left, Value* right);

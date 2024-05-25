@@ -167,6 +167,33 @@ namespace vipir
         return udiv;
     }
 
+    BinaryInst* IRBuilder::CreateULShift(Value* left, Value* right)
+    {
+        BinaryInst* ulshift = new BinaryInst(mInsertPoint, left, Instruction::ULSHIFT, right);
+
+        mInsertPoint->insertValue(ulshift);
+
+        return ulshift;
+    }
+
+    BinaryInst* IRBuilder::CreateURShift(Value* left, Value* right)
+    {
+        BinaryInst* urshift = new BinaryInst(mInsertPoint, left, Instruction::URSHIFT, right);
+
+        mInsertPoint->insertValue(urshift);
+
+        return urshift;
+    }
+
+    BinaryInst* IRBuilder::CreateSRShift(Value* left, Value* right)
+    {
+        BinaryInst* srshift = new BinaryInst(mInsertPoint, left, Instruction::SRSHIFT, right);
+
+        mInsertPoint->insertValue(srshift);
+
+        return srshift;
+    }
+
     BinaryInst* IRBuilder::CreateBWOr(Value* left, Value* right)
     {
         BinaryInst* bwor = new BinaryInst(mInsertPoint, left, Instruction::BWOR, right);

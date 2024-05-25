@@ -51,6 +51,16 @@ namespace vipir
                 operatorName = "udiv";
                 break;
 
+            case Instruction::ULSHIFT:
+                operatorName = "ulshift";
+                break;
+            case Instruction::URSHIFT:
+                operatorName = "urshift";
+                break;
+            case Instruction::SRSHIFT:
+                operatorName = "srshift";
+                break;
+
             case Instruction::BWOR:
                 operatorName = "bwor";
                 break;
@@ -100,6 +110,10 @@ namespace vipir
         if (mOperator == Instruction::UMUL || mOperator == Instruction::SDIV || mOperator == Instruction::UDIV)
         {
             return {0, 2}; // rax, rdx
+        }
+        else if (mOperator == Instruction::ULSHIFT || mOperator == Instruction::URSHIFT || mOperator == Instruction::SRSHIFT)
+        {
+            return {1}; // rcx
         }
         return {};
     }
@@ -170,6 +184,16 @@ namespace vipir
                 createSingleOpArithmetic(lir::BinaryArithmetic::Operator::Div);
                 break;
 
+            case Instruction::ULSHIFT:
+                createSingleOpArithmetic(lir::BinaryArithmetic::Operator::ULShift);
+                break;
+            case Instruction::URSHIFT:
+                createSingleOpArithmetic(lir::BinaryArithmetic::Operator::URShift);
+                break;
+            case Instruction::SRSHIFT:
+                createSingleOpArithmetic(lir::BinaryArithmetic::Operator::SRShift);
+                break;
+
             case Instruction::BWAND:
                 createArithmetic(lir::BinaryArithmetic::Operator::BWAnd);
                 break;
@@ -237,6 +261,9 @@ namespace vipir
             case Instruction::UMUL:
             case Instruction::SDIV:
             case Instruction::UDIV:
+            case Instruction::ULSHIFT:
+            case Instruction::URSHIFT:
+            case Instruction::SRSHIFT:
             case Instruction::BWOR:
             case Instruction::BWAND:
             case Instruction::BWXOR:

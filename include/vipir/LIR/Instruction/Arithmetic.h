@@ -19,6 +19,7 @@ namespace vipir
                 IMul, Mul,
                 IDiv, Div,
 
+                ULShift, URShift, SRShift,
                 BWAnd, BWOr, BWXor
             };
 
